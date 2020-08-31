@@ -1,7 +1,9 @@
 package com.example.synrgy_retrofit.pojo
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 data class GetPersonsResponse(
     @SerializedName("count")
@@ -9,18 +11,20 @@ data class GetPersonsResponse(
     @SerializedName("result")
     val result: List<Result>
 ) {
+
+    @Parcelize
     data class Result(
         @SerializedName("CreatedAt")
         val createdAt: String,
         @SerializedName("DeletedAt")
-        val deletedAt: Any,
+        val deletedAt: String?,
         @SerializedName("first_name")
-        val firstName: String,
+        var firstName: String,
         @SerializedName("ID")
         val iD: Int,
         @SerializedName("last_name")
-        val lastName: String,
+        var lastName: String,
         @SerializedName("UpdatedAt")
         val updatedAt: String
-    )
+    ) : Parcelable
 }
